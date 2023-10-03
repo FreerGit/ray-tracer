@@ -1,4 +1,4 @@
 (executable
  (public_name ray_tracer)
  (name main)
- (libraries ray_tracer))
+ (libraries rays eio eio_main))

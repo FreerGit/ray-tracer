@@ -18,6 +18,7 @@ pkgs.mkShell {
       dune_3
       ocaml-lsp
 
+      findlib
       merlin
       core
 

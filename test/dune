@@ -1,2 +1,7 @@
-(test
- (name ray_tracer))
+(library
+ (name ray_tracer_test)
+ (libraries rays core)
+ (preprocess
+  (pps ppx_inline_test ppx_expect))
+ (inline_tests
+  (deps "../images/test.ppm")))
