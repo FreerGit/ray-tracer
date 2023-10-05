@@ -21,6 +21,7 @@ pkgs.mkShell {
       findlib
       merlin
       core
+      utop
 
       eio
       eio_main
