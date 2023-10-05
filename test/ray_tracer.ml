@@ -18,9 +18,10 @@ let%expect_test _ =
     Image.create ~height:2 ~width:3 ~f:(fun ~row ~col -> Pixel.create (row, col, 0))
   in
   F.printf "%a" Image.pp_ppm image;
-  [%expect {|
+  [%expect
+    {|
     P3
-    2 3
+    3 2
     255
       0   0   0
       0   1   0
@@ -28,4 +29,12 @@ let%expect_test _ =
       1   0   0
       1   1   0
       1   2   0 |}]
+;;
+
+let%expect_test _ =
+  let open Vec3d in
+  let u = { x = -1.0; y = -2.; z = 3. } in
+  let v = { x = 4.; y = 0.; z = -8. } in
+  Vec3d.dot u v |> print_float;
+  [%expect {| -28. |}]
 ;;

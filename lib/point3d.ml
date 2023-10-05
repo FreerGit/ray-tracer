@@ -1,1 +1,1 @@
-type t = float * float * float
+type t = Vec3d.t

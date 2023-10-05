@@ -1,12 +1,18 @@
 open! Core
 module F = Format
 
-type t = float * float * float
+type t =
+  { x : float
+  ; y : float
+  ; z : float
+  }
 
-let ( + ) (v11, v12, v13) (v21, v22, v23) = v11 +. v21, v12 +. v22, v13 +. v23
-let ( - ) (v11, v12, v13) (v21, v22, v23) = v11 -. v21, v12 -. v22, v13 -. v23
-let ( * ) a (v1, v2, v3) = a *. v1, a *. v2, a *. v3
-let ( / ) (v1, v2, v3) a = v1 /. a, v2 /. a, v3 /. a
-let length_squared (v1, v2, v3) = (v1 *. v1) +. (v2 *. v2) +. (v3 *. v3)
+let mk x y z = { x; y; z }
+let ( + ) u v = { x = u.x +. v.x; y = u.y +. v.y; z = u.z +. v.z }
+let ( - ) u v = { x = u.x -. v.x; y = u.y -. v.y; z = u.z -. v.z }
+let ( * ) a v = { x = a *. v.x; y = a *. v.y; z = a *. v.z }
+let ( / ) v t = 1.0 /. t * v
+let length_squared v = (v.x *. v.x) +. (v.y *. v.y) +. (v.z *. v.z)
 let length v = sqrt @@ length_squared v
 let unit v = v / length v
+let dot u v = (u.x *. v.x) +. (u.y *. v.y) +. (u.z *. v.z)
