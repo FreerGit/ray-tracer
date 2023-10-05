@@ -4,9 +4,9 @@ module F = Format
 type t = { pixels : Pixel.t array array }
 
 let create ~height ~width ~f =
-  let pixels = Array.make_matrix ~dimx:height ~dimy:width Pixel.zero in
-  for row = 0 to height - 1 do
-    for col = 0 to width - 1 do
+  let pixels = Array.make_matrix ~dimx:width ~dimy:height Pixel.zero in
+  for row = 0 to width - 1 do
+    for col = 0 to height - 1 do
       pixels.(row).(col) <- f ~row ~col
     done
   done;
